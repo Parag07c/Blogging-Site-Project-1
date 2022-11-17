@@ -17,10 +17,12 @@ const authorModel=new mongoose.Schema({   //here we can use mongoose Schema func
     email:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        match:[/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/, 'Please fill a valid email address']
+        
     },
     password:{
-        type:Number,
+        type:String,
         required:true
     }
 

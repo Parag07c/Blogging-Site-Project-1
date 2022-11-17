@@ -1,43 +1,44 @@
 const mongoose = require('mongoose')
+
+
 const blogSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: 'Blog body is required',
-        trim: true// to remove white space 
+        required: true,
+    
     },
     body: {
         type: String,
-        required: 'Blog body is required',
-        trim: true
+        required:true,
     },
     authorId: {
-        required: 'Blog is required',
-        type: mongoose.Schema.Type.ObjectId,
-        ref: 'Author'
+        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'authors'
     },
+    tags:[String],
+        
     category:{
         type:String,
-        required:'Blog category is required',
-        trim:true
+        required:true,
     },
-    subcategory:
-    [{type:String,
-    trim:true}],
+    subcategory:[String],
+           
     isPublished:{
         type:Boolean,
         default:false
     },
-    PublishedAt:{
+    publishedAt:{
         type:Date,
-        default:null
+        default:""
     },
     isDeleted:{
         type:Boolean,
         default:false
     },
-    deleteAt:{
+    deletedAt:{
         type:Date,
-        default:null
+        default:""
     },
 
 },

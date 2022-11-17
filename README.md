@@ -20,7 +20,7 @@ Repository for backend cohort - Lithium
 
 ### Author APIs /authors
 - Create an author - atleast 5 authors
-- Create a author document from request body.
+- Create a autho+r document from request body.
   `Endpoint: BASE_URL/authors`
 
 ### POST /blogs
@@ -58,7 +58,7 @@ example of a query url: blogs?filtername=filtervalue&f2=fv2
 - If the blog document doesn't exist then return an HTTP status of 404 with a body like [this](#error-response-structure)
 
 ## Phase II
-
+          
 - Add authentication and authroisation feature
 
 ### POST /login

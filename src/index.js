@@ -7,17 +7,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-mongoose.connect("mongodb+srv://AadarshPandit21:TzUH6bos1cHJeK4K@cluster0.qs2wbxg.mongodb.net/Aadarsh21-db", {
+mongoose.connect("mongodb+srv://Parag:RVhLsVk7mqm1pFlQ@project.rn0fkso.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true
 })
 .then( () => console.log("MongoDb is connected"))
 .catch ( err => console.log(err) )
 
-
 app.use('/', route)
-
 
 app.listen(process.env.PORT || 3000, function () {
     console.log('Express app running on port ' + (process.env.PORT || 3000))
-});//
+})
