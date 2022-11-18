@@ -1,11 +1,11 @@
 const mongoose =require('mongoose')  //here we require mongoose library package
 
 const authorModel=new mongoose.Schema({   //here we can use mongoose Schema function to define Schema
-    firstName:{
+    fname:{
         type:String,
         required:true
     },
-    lastName:{
+    lname:{
         type:String,
         required:true
     },
