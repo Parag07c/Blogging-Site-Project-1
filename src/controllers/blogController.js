@@ -10,10 +10,10 @@ const createBlog=async function(req,res){
         const newBlog=await blogModel.create(req.body)
         return res.status(201).send({status:true,data:newBlog})
     }else{
-      return res.status(400).send({msg:"Invalid author Id"})
+      return res.status(400).send({status:false,msg:"Invalid author Id"})
     }
     } catch (error) {
-      return res.status(500).send({msg:error.message}) 
+      return res.status(500).send({status:false,msg:error.message}) 
       
     }
 
@@ -27,10 +27,10 @@ const getBlogs=async function(req,res){
     if (savedBlog.length!=0){
       return res.status(200).send({status:true,data:savedBlog})
     }else{
-      return res.status(404).send({msg:"Blog Not found"})
+      return res.status(404).send({status:false,msg:"Blog Not found"})
     }
   } catch (error) {
-    return res.status(500).send({msg:error.message}) 
+    return res.status(500).send({status:false,msg:error.message}) 
     
   }
 }
@@ -56,15 +56,15 @@ const updateBlog=async function(req,res){
                 updation = await blogModel.findById(blogid)
                 res.status(200).send({ status: true, msg: updation })
             } else {
-                res.status(404).send({ msg: "blog No longer exist" })
+                res.status(404).send({status:false, msg: "blog No longer exist" })
             }
         } else {
-            res.status(404).send({ msg: "Blog Id not found" })
+            res.status(404).send({status:false, msg: "Blog Id not found" })
         }
 
     
   } catch (error) {
-    return res.status(500).send({msg:error.message}) 
+    return res.status(500).send({status:false,msg:error.message}) 
     
   }
 }
@@ -76,15 +76,15 @@ const  deleteBlog=async function (req,res){
       return res.status(404).send({status:false,msg:"Invalid blog Id"})
     }
     else if(valid.isDeleted==true){
-           return res.status(400).send({msg:"Bad request"})
+           return res.status(400).send({status:false,msg:"Bad request"})
     }
     else{
       await blogModel.updateOne({_id:blogId},{$set:{isDeleted:true,deletedAt:moment().format('YYYY MM DD')}})
-      return res.status(200).send()
+      return res.status(200).send({status:true})
     }
 
   } catch (error) {
-    return res.status(500).send({msg:error.message}) 
+    return res.status(500).send({status:false,msg:error.message}) 
     
   }
 }
@@ -104,7 +104,7 @@ const deleteBlogByfields=async function(req,res){
         }
       }
       } catch (error) {
-        return res.status(500).send({msg:error.message}) 
+        return res.status(500).send({status:false,msg:error.message}) 
         
       }
 }
