@@ -84,7 +84,7 @@ const updateBlog=async function(req,res){
                 if (data.tags || data.subcategory) {
                     await blogModel.findOneAndUpdate({ _id: blogid }, { $push: { tags: data.tags, subcategory: data.subcategory } }, { new: true })
                 }
-                updation = await blogModel.findById(blogid)
+                 let updation = await blogModel.findById(blogid)
                 return res.status(200).send({ status: true, msg: updation })
             } else {
                return  res.status(404).send({status:false, msg: "blog No longer exist" })
