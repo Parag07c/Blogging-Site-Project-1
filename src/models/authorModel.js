@@ -4,6 +4,7 @@ const authorModel=new mongoose.Schema({   //here we can use mongoose Schema func
     fname:{
         type:String,
         required:true
+        
     },
     lname:{
         type:String,
@@ -18,7 +19,7 @@ const authorModel=new mongoose.Schema({   //here we can use mongoose Schema func
         type:String,
         required:true,
         unique:true,
-        match:[/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/, 'Please fill a valid email address']
+        //match:[/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/, 'Please fill a valid email address']
         
     },
     password:{

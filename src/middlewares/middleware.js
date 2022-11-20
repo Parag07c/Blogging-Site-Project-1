@@ -1,11 +1,13 @@
 const jwt= require('jsonwebtoken')
 const blogModel = require('../models/blogModel')
+const { default: mongoose } = require("mongoose")
 
-const authentication= async function(req,res,next){
+
+const authentication=  function(req,res,next){
 try{
     let token = req.headers["x-api-key"]
     if(!token){
-        return res.status(400).send({message:"token is required"})
+        return res.status(400).send({status:false,message:"token must be required"})
     }
     let verify= jwt.verify(token,"Project-1")
     if(!verify){
@@ -25,6 +27,9 @@ const authorization =async function (req,res,next){
         let blogId=req.params.blogId
         let valid=req.query
         if(blogId){
+            if(!mongoose.isValidObjectId(blogId)){
+                return res.status(400).send({status:false,msg:"Please enter a valid BlogId"})
+              }
             let data=await blogModel.findById(blogId)
             if(!data){
                 return res.status(404).send({status:true,msg:"Invalid blogId"})

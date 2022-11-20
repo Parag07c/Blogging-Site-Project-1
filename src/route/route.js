@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authorController= require("../controllers/authorController")
 const blogController= require("../controllers/blogController")
-const {authentication,authorization}=require('../middlewares/middleware')
+const {authentication,authorization}=require('../middlewares/middleware');
 
 //to create author
 router.post("/authors",authorController.createAuthor)
@@ -26,3 +26,5 @@ router.delete('/blogs',authentication,authorization,blogController.deleteBlogByf
 router.post('/login',authorController.login)
 
 module.exports = router;
+
+
